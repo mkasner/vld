@@ -35,6 +35,9 @@ func (f *File) vldOverrideDecl(node ast.Node) bool {
 	fname := ident.Name
 
 	frecv := fdecl.Recv
+	if frecv == nil {
+		return true
+	}
 	for _, p := range frecv.List {
 		ptype := p.Type.(*ast.StarExpr)
 

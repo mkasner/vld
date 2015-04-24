@@ -1,6 +1,7 @@
 #vld
 
 Validator engine for Golang. Validate struct fields or write custom validations as functions.
+Chain them together and make your code cleaner and easier to reason.2
 
 #Installation
 
