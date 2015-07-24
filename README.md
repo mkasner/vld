@@ -68,3 +68,4 @@ func isValid(w Wine) bool {
 It generates struct validator for you, so you can just call validate method on struct and get results.
 #Thanks
 - [github.com/asaskevich/govalidator](https://github.com/asaskevich/govalidator)  - lots of documented and tested validations
+- [https://godoc.org/golang.org/x/tools/cmd/stringer](https://godoc.org/golang.org/x/tools/cmd/stringer) - intro into AST package and code generation

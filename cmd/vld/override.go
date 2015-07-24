@@ -11,14 +11,14 @@ const (
 
 func (g *Generator) fetchOverride(typeName string) bool {
 	var result bool
-	for _, file := range g.pkg.files {
-		if file.file != nil {
-			file.typeName = typeName
-			file.overrideExist = false
-			ast.Inspect(file.file, file.vldOverrideDecl)
-			result = file.overrideExist
-		}
-	}
+	// for _, file := range g.pkg.files {
+	// 	if file.file != nil {
+	// 		file.typeName = typeName
+	// 		file.overrideExist = false
+	// 		ast.Inspect(file.file, file.vldOverrideDecl)
+	// 		result = file.overrideExist
+	// 	}
+	// }
 	return result
 }
 

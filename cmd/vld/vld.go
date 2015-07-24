@@ -80,7 +80,7 @@ func main() {
 		g.Printf("import \"%s\"\n", rp)
 	}
 
-	fmt.Printf("%+v\n", types)
+	log.Printf("%+v\n", types)
 	// Run generate for each type.
 	for _, typeName := range types {
 		g.generate(typeName, rulePackages)
