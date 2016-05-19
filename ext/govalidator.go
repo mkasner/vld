@@ -1,13 +1,14 @@
-package vld
+package ext
 
 import (
 	"fmt"
 
 	"github.com/asaskevich/govalidator"
+	"github.com/mkasner/vld"
 )
 
 // vld:email
-func Email(value, name string) ValidationFunc {
+func Email(value, name string) vld.ValidationFunc {
 	return func() error {
 		if !govalidator.IsEmail(value) && value != "" {
 			return fmt.Errorf("vld: Not regular email: %s: %s", name, value)
@@ -17,7 +18,7 @@ func Email(value, name string) ValidationFunc {
 }
 
 // vld:ip
-func Ip(value, name string) ValidationFunc {
+func Ip(value, name string) vld.ValidationFunc {
 	return func() error {
 		if !govalidator.IsIP(value) && value != "" {
 			return fmt.Errorf("vld: Not regular ip: %s: %s", name, value)
@@ -27,7 +28,7 @@ func Ip(value, name string) ValidationFunc {
 }
 
 // vld:mac
-func Mac(value, name string) ValidationFunc {
+func Mac(value, name string) vld.ValidationFunc {
 	return func() error {
 		if !govalidator.IsMAC(value) && value != "" {
 			return fmt.Errorf("vld: Not regular mac address: %s: %s", name, value)
