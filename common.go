@@ -1,6 +1,7 @@
 package vld
 
 import (
+	"errors"
 	"reflect"
 
 	"fmt"
@@ -111,6 +112,16 @@ func Required(value interface{}, name string) ValidationFunc {
 	return func() error {
 		if reflect.DeepEqual(value, reflect.Zero(reflect.TypeOf(value)).Interface()) {
 			return fmt.Errorf("vld: Required: %s", name)
+		}
+		return nil
+	}
+}
+
+func Message(f ValidationFunc, message string) ValidationFunc {
+	return func() error {
+		err := f()
+		if err != nil {
+			return errors.New(message)
 		}
 		return nil
 	}

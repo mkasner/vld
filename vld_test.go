@@ -25,12 +25,13 @@ func TestBuildValidator(t *testing.T) {
 	empty := 0
 
 	validator = validator.
+		Add(Message(Required(empty, "empty"), "Ovo mora biti prazno")).
 		AddFunc(func() error {
-		if len(payload) > 4 {
-			return fmt.Errorf("Too long: %s", payload)
-		}
-		return nil
-	}).
+			if len(payload) > 4 {
+				return fmt.Errorf("Too long: %s", payload)
+			}
+			return nil
+		}).
 		Add(Required(empty, "empty")).
 		Add(MaxInt64(1000, valueint, "")).
 		Add(MaxLength(4, payload, "")).
@@ -38,6 +39,6 @@ func TestBuildValidator(t *testing.T) {
 		Add(&stringValidation{payload: "42323312"})
 	err := validator.Validate()
 	if err != nil {
-		t.Log(err.Error())
+		t.Fatal(err)
 	}
 }
